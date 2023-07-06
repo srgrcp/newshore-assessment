@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": "8c6373b3-8d36-4713-af03-42c5c332ef40"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -20,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/newshore-assessment",
+            "outputPath": "dist/newshore-assessment/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -100,6 +101,61 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/newshore-assessment/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "sass"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "newshore-assessment:build:development",
+              "serverTarget": "newshore-assessment:server:development"
+            },
+            "production": {
+              "browserTarget": "newshore-assessment:build:production",
+              "serverTarget": "newshore-assessment:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "newshore-assessment:build:production",
+              "serverTarget": "newshore-assessment:server:production"
+            },
+            "development": {
+              "browserTarget": "newshore-assessment:build:development",
+              "serverTarget": "newshore-assessment:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
