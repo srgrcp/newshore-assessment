@@ -44,9 +44,18 @@ describe('mustNotBeEqualThan', () => {
     expect(isValid).toBeTrue();
   });
 
-  it('should be invalid with same value', () => {
+  it('should not be valid with same value', () => {
     inputForm.controls.controlA.setValue('foo');
     inputForm.controls.controlB.setValue('foo');
+
+    const isValid = inputForm.valid;
+
+    expect(isValid).toBeFalse();
+  });
+
+  it('should not be valid with same values, but different case', () => {
+    inputForm.controls.controlA.setValue('foo');
+    inputForm.controls.controlB.setValue('FOO');
 
     const isValid = inputForm.valid;
 
