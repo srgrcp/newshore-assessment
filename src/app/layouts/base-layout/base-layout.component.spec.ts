@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaseLayoutComponent } from './base-layout.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BaseLayoutComponent', () => {
   let component: BaseLayoutComponent;
@@ -8,7 +9,7 @@ describe('BaseLayoutComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BaseLayoutComponent]
+      imports: [BaseLayoutComponent, RouterTestingModule],
     });
     fixture = TestBed.createComponent(BaseLayoutComponent);
     component = fixture.componentInstance;

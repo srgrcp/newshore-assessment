@@ -1,13 +1,7 @@
 import { Component, signal } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-  FormBuilder,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { JourneyInputForm } from './types/journey-form';
+import { mustNotBeEqualThan } from '../common/validators/must-not-be-equal-than';
 
 @Component({
   selector: 'ns-flight',
@@ -32,10 +26,10 @@ export class FlightComponent {
 
     // Add non-duplicated fields validation
     this.journeyInputForm.controls.origin.addValidators(
-      this.mustNotBeEqualThan(this.destinationControl)
+      mustNotBeEqualThan(this.destinationControl)
     );
     this.journeyInputForm.controls.destination.addValidators(
-      this.mustNotBeEqualThan(this.originControl)
+      mustNotBeEqualThan(this.originControl)
     );
   }
 
@@ -44,14 +38,6 @@ export class FlightComponent {
   }
   get destinationControl() {
     return this.journeyInputForm.controls.destination;
-  }
-
-  mustNotBeEqualThan(otherControl: FormControl<string>): ValidatorFn {
-    return (control: AbstractControl<string>): ValidationErrors | null => {
-      return control.value.toUpperCase() === otherControl.value.toUpperCase()
-        ? { duplicatedControls: { value: control.value } }
-        : null;
-    };
   }
 
   calculate() {
