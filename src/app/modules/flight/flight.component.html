@@ -1,0 +1,9 @@
+<ns-card title="Calculadora de rutas">
+  <p>Elige el origen y el destino y haz clic en el botón calcular.</p>
+
+  <ns-journey-form
+    [journeyInputForm]="journeyInputForm"
+    [hasSubmited]="hasSubmited"
+    (onSubmit)="calculate()"
+  ></ns-journey-form>
+</ns-card>

@@ -6,10 +6,17 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot({}, {}),
+    BaseLayoutComponent,
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,39 @@
+<form
+  class="flex flex-col gap-6 pt-6"
+  [formGroup]="journeyInputForm"
+  (ngSubmit)="submit()"
+>
+  <input
+    class="rounded-lg text-lg p-1.5"
+    [class.uppercase]="isOriginNotEmpty"
+    type="text"
+    placeholder="Origen"
+    name="origin"
+    formControlName="origin"
+  />
+  <input
+    class="rounded-lg text-lg p-1.5"
+    [class.uppercase]="isDestinationNotEmpty"
+    type="text"
+    placeholder="Destino"
+    name="destination"
+    formControlName="destination"
+  />
+
+  <div
+    class="bg-red-200/50 rounded-lg p-2 transition"
+    [class.hidden]="!(!isJourneyInputFormValid && hasSubmited())"
+  >
+    <p class="text-red-800">
+      Error: los campos deben tener 3 caracteres exactamente y los campos no
+      deben contener el mismo valor.
+    </p>
+  </div>
+
+  <button
+    type="submit"
+    class="bg-indigo-500 hover:bg-indigo-400 transition-all rounded-xl py-2 text-zinc-100"
+  >
+    Calcular
+  </button>
+</form>
