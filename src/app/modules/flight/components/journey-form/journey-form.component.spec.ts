@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { mustNotBeEqualThan } from '../../../common/validators/must-not-be-equal-than';
 import { signal } from '@angular/core';
+import { ButtonComponent } from 'src/app/modules/common/components/button/button.component';
 
 describe('JourneyFormComponent', () => {
   let component: JourneyFormComponent;
@@ -21,7 +22,7 @@ describe('JourneyFormComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [JourneyFormComponent],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, ButtonComponent],
     });
     fb = TestBed.inject(FormBuilder);
     fixture = TestBed.createComponent(JourneyFormComponent);

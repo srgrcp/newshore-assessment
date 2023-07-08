@@ -10,15 +10,21 @@ import { JourneyFormComponent } from './components/journey-form/journey-form.com
 import { FlightListLoaderService } from './services/flight-list-loader.service';
 import { JourneyCalculatorService } from './services/journey-calculator.service';
 import { JourneyResultComponent } from './components/journey-result/journey-result.component';
+import { ButtonComponent } from '../common/components/button/button.component';
 
 @NgModule({
-  declarations: [JourneyFormComponent, JourneyCalculatorComponent, JourneyResultComponent],
+  declarations: [
+    JourneyFormComponent,
+    JourneyCalculatorComponent,
+    JourneyResultComponent,
+  ],
   imports: [
     CommonModule,
     FlightRoutingModule,
     CardComponent,
     ReactiveFormsModule,
     FlightStoreModule,
+    ButtonComponent,
   ],
   providers: [FlightListLoaderService, JourneyCalculatorService],
 })

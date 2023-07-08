@@ -1,0 +1,26 @@
+<ns-card title="Configuración">
+  <form
+    class="flex flex-col gap-6 pt-6"
+    [formGroup]="settingsForm"
+    (ngSubmit)="setCurrency()"
+  >
+    <div class="flex flex-col gap-1">
+      <label class="font-semibold text-xs uppercase ml-1" for="currency"
+        >Moneda</label
+      >
+      <select
+        class="rounded-lg text-lg p-1.5"
+        placeholder="Elige una moneda"
+        name="currency"
+        id="currency"
+        formControlName="currency"
+      >
+        <option *ngFor="let option of currencyOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+
+    <ns-button type="submit">Guardar</ns-button>
+  </form>
+</ns-card>
