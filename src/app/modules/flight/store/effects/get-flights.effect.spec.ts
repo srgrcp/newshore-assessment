@@ -7,13 +7,16 @@ import { Observable, of } from 'rxjs';
 import { GetFlightsEffect } from './get-flights.effect';
 import { FlightListApi } from '../api/flight-list.api';
 import { FlightState } from '../flight.feature';
-import { flightListInitialState } from '../reducers/flight-list.reducer';
+import {
+  FlightListState,
+  flightListInitialState,
+} from '../reducers/flight-list.reducer';
 import { flightListStateSelector } from '../selectors/flight-list.selector';
 import { testFlights, testFlightsApi } from './flight-list-testing-data';
 import * as flightsActions from '../actions/flight-list.actions';
 import { flightApiResponseToFlight } from '../../utils/flight-api-response-to-flight';
 
-describe('GetFlightEffect', () => {
+describe('GetFlightsEffect', () => {
   let store: MockStore<FlightState>;
   let actions$ = new Observable<Action>();
   let getFlightsEffect: GetFlightsEffect;
@@ -31,18 +34,16 @@ describe('GetFlightEffect', () => {
       providers: [
         GetFlightsEffect,
         provideMockActions(() => actions$),
-        provideMockStore<FlightState>({
-          initialState: { flightList: flightListInitialState },
+        provideMockStore<FlightListState>({
+          initialState: flightListInitialState,
           selectors: [
             {
               selector: flightListStateSelector,
-              value: [
-                {
-                  flights: null,
-                  loading: false,
-                  error: false,
-                },
-              ],
+              value: {
+                flights: null,
+                loading: false,
+                error: false,
+              },
             },
           ],
         }),
@@ -83,8 +84,8 @@ describe('GetFlightEffect', () => {
       providers: [
         GetFlightsEffect,
         provideMockActions(() => actions$),
-        provideMockStore<FlightState>({
-          initialState: { flightList: flightListInitialState },
+        provideMockStore<FlightListState>({
+          initialState: flightListInitialState,
           selectors: [
             {
               selector: flightListStateSelector,
