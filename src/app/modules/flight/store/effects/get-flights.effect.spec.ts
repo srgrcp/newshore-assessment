@@ -8,7 +8,7 @@ import { GetFlightsEffect } from './get-flights.effect';
 import { FlightListApi } from '../api/flight-list.api';
 import { FlightState } from '../flight.feature';
 import { flightListInitialState } from '../reducers/flight-list.reducer';
-import { flightsStateSelector } from '../selectors/flight-list.selector';
+import { flightListStateSelector } from '../selectors/flight-list.selector';
 import { testFlights, testFlightsApi } from './flight-list-testing-data';
 import * as flightsActions from '../actions/flight-list.actions';
 import { flightApiResponseToFlight } from '../../utils/flight-api-response-to-flight';
@@ -35,7 +35,7 @@ describe('GetFlightEffect', () => {
           initialState: { flightList: flightListInitialState },
           selectors: [
             {
-              selector: flightsStateSelector,
+              selector: flightListStateSelector,
               value: [
                 {
                   flights: null,
@@ -53,13 +53,13 @@ describe('GetFlightEffect', () => {
     getFlightsEffect = TestBed.inject(GetFlightsEffect);
     store = TestBed.inject(MockStore);
 
-    const expectedAction = flightsActions.setFlights({
+    const expectedAction = flightsActions.fetchFlightsSuccess({
       flights: testFlightsApi.map((flights) =>
         flightApiResponseToFlight(flights)
       ),
     });
 
-    actions$ = of(flightsActions.getFlights);
+    actions$ = of(flightsActions.fetchFlights);
 
     getFlightsEffect.getFlights$.subscribe((nextAction) => {
       expect(nextAction).toEqual(expectedAction);
@@ -87,7 +87,7 @@ describe('GetFlightEffect', () => {
           initialState: { flightList: flightListInitialState },
           selectors: [
             {
-              selector: flightsStateSelector,
+              selector: flightListStateSelector,
               value: {
                 flights: testFlights,
                 loading: false,
@@ -103,13 +103,13 @@ describe('GetFlightEffect', () => {
     getFlightsEffect = TestBed.inject(GetFlightsEffect);
     store = TestBed.inject(MockStore);
 
-    const expectedAction = flightsActions.setFlights({
+    const expectedAction = flightsActions.fetchFlightsSuccess({
       flights: testFlightsApi.map((flights) =>
         flightApiResponseToFlight(flights)
       ),
     });
 
-    actions$ = of(flightsActions.getFlights);
+    actions$ = of(flightsActions.fetchFlights);
 
     getFlightsEffect.getFlights$.subscribe((nextAction) => {
       expect(nextAction).toEqual(expectedAction);

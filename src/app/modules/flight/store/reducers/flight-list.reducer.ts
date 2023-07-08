@@ -17,7 +17,7 @@ export const flightListInitialState: FlightListState = {
 
 export const flightListReducer = createReducer(
   flightListInitialState,
-  on(flightsActions.getFlights, (state) => {
+  on(flightsActions.fetchFlights, (state) => {
     if (state.flights) {
       return state;
     }
@@ -27,14 +27,14 @@ export const flightListReducer = createReducer(
       error: false,
     };
   }),
-  on(flightsActions.setFlights, (_, { flights }) => {
+  on(flightsActions.fetchFlightsSuccess, (_, { flights }) => {
     return {
       flights,
       loading: false,
       error: false,
     };
   }),
-  on(flightsActions.getFlightsError, (state) => ({
+  on(flightsActions.fetchFlightsError, (state) => ({
     ...state,
     loading: false,
     error: true,

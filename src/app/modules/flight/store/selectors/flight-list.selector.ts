@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 import { FlightState, selectflightFeatureState } from '../flight.feature';
 
-export const flightsStateSelector = createSelector(
+export const flightListStateSelector = createSelector(
   selectflightFeatureState,
   (state: FlightState) => state.flightList
 );

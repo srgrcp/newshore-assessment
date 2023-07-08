@@ -1,11 +1,13 @@
 import { createAction, props } from '@ngrx/store';
 import { Flight } from '../../types/flight';
 
-export const getFlights = createAction('[Flight List] Get flights');
+export const fetchFlights = createAction('[Flight List] Fetch flights');
 
-export const setFlights = createAction(
-  '[Flight List] Set flights',
+export const fetchFlightsSuccess = createAction(
+  '[Flight List] Fetch flights success',
   props<{ flights: Flight[] }>()
 );
 
-export const getFlightsError = createAction('[Flight List] Get Flights error');
+export const fetchFlightsError = createAction(
+  '[Flight List] Fetch flights error'
+);
