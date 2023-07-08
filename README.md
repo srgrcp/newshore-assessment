@@ -1,27 +1,32 @@
-# NewshoreAssessment
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+# Newshore Assessment By Sergio Carrillo
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para ejecutar el proyecto en local ejecute uno de los siguientes comandos
 
-## Code scaffolding
+ - `ng serve`
+ - `yarn start`
+ - `npm start`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez iniciado el servidor, ingresar la siguiente dirección en el navegador: `http://localhost:4200/`.
 
-## Build
+## Despliegue continuo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Adicionalmente, este proyecto está desplegado como un sitio estático en Cloudflare Pages, por lo que se puede acceder directamente a traves de este link: [https://newshore-assessment.pages.dev/](https://newshore-assessment.pages.dev/).
 
-## Running unit tests
+## Modo de uso
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Dirigirse al módulo "Rutas", utilizando el dock en la parte inferior de la pantalla.
+- Ingresar "origen" y "destino" y hacer click en "Calcular".
+- Inmediatamente se mostrará en pantalla el resultado de la busqueda.
+- Opcionalmente puede ir al módulo "Config." y elegir el tipo de moneda.
 
-## Running end-to-end tests
+## Detalles técnicos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Este proyecto cuenta con manejador de estados NgRx por feature (por módulo).
 
-## Further help
+- Diseño realizado con Tailwindcss e inspirado en [https://www.figma.com/community/file/1248375255495415511](https://www.figma.com/community/file/1248375255495415511).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- La estructura es modular, cada módulo puede tener su propio manejador de estados, servicios, componentes, etc., los recursos compartidos se encuentran en el módulo `common`.
+
+- Se implementaron caracteristicas de las últimas versiones de angular, por ejemplo: signals, standalone components, typed forms y prerender (Angular Universal).
