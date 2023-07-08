@@ -1,6 +1,6 @@
 import { Component, WritableSignal } from '@angular/core';
 import { SettingsService } from '../common/services/settings/settings.service';
-import { SettingsForm } from '../flight/types/settings-form';
+import { SettingsForm } from '../common/types/settings-form';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({

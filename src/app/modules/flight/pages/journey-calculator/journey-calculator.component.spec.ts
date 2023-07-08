@@ -13,6 +13,7 @@ import {
 import { flightListStateSelector } from '../../store/selectors/flight-list.selector';
 import { JourneyCalculatorService } from '../../services/journey-calculator.service';
 import { ButtonComponent } from 'src/app/modules/common/components/button/button.component';
+import { CurrencyConverterServiceModule } from 'src/app/modules/common/services/currency-converter/currency-converter-service.module';
 
 describe('JourneyCalculatorComponent', () => {
   let component: JourneyCalculatorComponent;
@@ -21,7 +22,12 @@ describe('JourneyCalculatorComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [JourneyCalculatorComponent, JourneyFormComponent],
-      imports: [CardComponent, ReactiveFormsModule, ButtonComponent],
+      imports: [
+        CardComponent,
+        ReactiveFormsModule,
+        ButtonComponent,
+        CurrencyConverterServiceModule,
+      ],
       providers: [
         FlightListLoaderService,
         JourneyCalculatorService,

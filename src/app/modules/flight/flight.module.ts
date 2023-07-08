@@ -11,6 +11,8 @@ import { FlightListLoaderService } from './services/flight-list-loader.service';
 import { JourneyCalculatorService } from './services/journey-calculator.service';
 import { JourneyResultComponent } from './components/journey-result/journey-result.component';
 import { ButtonComponent } from '../common/components/button/button.component';
+import { CurrencyConverterServiceModule } from '../common/services/currency-converter/currency-converter-service.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ButtonComponent } from '../common/components/button/button.component';
     ReactiveFormsModule,
     FlightStoreModule,
     ButtonComponent,
+    CurrencyConverterServiceModule,
+    HttpClientModule,
   ],
   providers: [FlightListLoaderService, JourneyCalculatorService],
 })

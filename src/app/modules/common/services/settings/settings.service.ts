@@ -2,7 +2,9 @@ import { Injectable, WritableSignal, effect, signal } from '@angular/core';
 
 const CURRENCY = 'CURRENCY';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SettingsService {
   currency: WritableSignal<string>;
   readonly currencyOptions = ['USD', 'EUR', 'COP', 'GBP', 'MXN'];
