@@ -5,7 +5,7 @@ import {
   Output,
   WritableSignal,
 } from '@angular/core';
-import { JourneyInputForm } from '../types/journey-form';
+import { JourneyInputForm } from '../../types/journey-form';
 
 @Component({
   selector: 'ns-journey-form',

@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { JourneyInputForm } from './types/journey-form';
-import { mustNotBeEqualThan } from '../common/validators/must-not-be-equal-than';
+import { FormBuilder, Validators } from '@angular/forms';
+import { mustNotBeEqualThan } from 'src/app/modules/common/validators/must-not-be-equal-than';
+import { JourneyInputForm } from '../../types/journey-form';
 
 @Component({
-  selector: 'ns-flight',
-  templateUrl: './flight.component.html',
-  styleUrls: ['./flight.component.sass'],
+  selector: 'ns-journey-calculator',
+  templateUrl: './journey-calculator.component.html',
+  styleUrls: ['./journey-calculator.component.sass'],
 })
-export class FlightComponent {
+export class JourneyCalculatorComponent {
   journeyInputForm: JourneyInputForm;
   hasSubmited = signal(false);
 

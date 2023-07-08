@@ -1,0 +1,31 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { JourneyCalculatorComponent } from './journey-calculator.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from 'src/app/modules/common/components/card/card.component';
+import { JourneyFormComponent } from '../../components/journey-form/journey-form.component';
+
+describe('JourneyCalculatorComponent', () => {
+  let component: JourneyCalculatorComponent;
+  let fixture: ComponentFixture<JourneyCalculatorComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [JourneyCalculatorComponent, JourneyFormComponent],
+      imports: [CardComponent, ReactiveFormsModule],
+    });
+    fixture = TestBed.createComponent(JourneyCalculatorComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should update hasSubmited', () => {
+    component.calculate();
+
+    expect(component.hasSubmited()).toBeTrue();
+  });
+});

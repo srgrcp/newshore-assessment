@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { mustNotBeEqualThan } from '../../common/validators/must-not-be-equal-than';
+import { mustNotBeEqualThan } from '../../../common/validators/must-not-be-equal-than';
 import { signal } from '@angular/core';
 
 describe('JourneyFormComponent', () => {
