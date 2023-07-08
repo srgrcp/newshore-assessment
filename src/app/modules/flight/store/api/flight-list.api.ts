@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlightApiResponse } from '../../types/flight';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class FlightListApi {
@@ -9,7 +10,7 @@ export class FlightListApi {
 
   fetchFlightList(): Observable<FlightApiResponse[]> {
     return this.http.get<FlightApiResponse[]>(
-      'https://recruiting-api.newshore.es/api/flights/2'
+      `${environment.baseFlightURL}/api/flights/2`
     );
   }
 }
