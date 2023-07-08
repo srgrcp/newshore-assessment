@@ -12,7 +12,7 @@ Una vez iniciado el servidor, ingresar la siguiente dirección en el navegador: 
 
 ## Despliegue continuo
 
-Adicionalmente, este proyecto está desplegado como un sitio estático en Cloudflare Pages, por lo que se puede acceder directamente a traves de este link: [https://newshore-assessment.pages.dev/](https://newshore-assessment.pages.dev/).
+Adicionalmente, este proyecto está desplegado como un sitio estático en Cloudflare Pages, por lo que se puede acceder directamente a través de este link: [https://newshore-assessment.pages.dev/](https://newshore-assessment.pages.dev/).
 
 ## Modo de uso
 
