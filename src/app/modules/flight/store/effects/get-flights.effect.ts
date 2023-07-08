@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
-import { FlightStoreModule } from '../flight-store.module';
 import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 import { flightListStateSelector } from '../selectors/flight-list.selector';
 import { FlightListApi } from '../api/flight-list.api';
@@ -10,9 +9,7 @@ import { flightApiResponseToFlight } from '../../utils/flight-api-response-to-fl
 
 import * as flightsActions from '../actions/flight-list.actions';
 
-@Injectable({
-  providedIn: FlightStoreModule,
-})
+@Injectable()
 export class GetFlightsEffect {
   constructor(
     private actions$: Actions,

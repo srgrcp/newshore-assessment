@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FlightStoreModule } from '../flight-store.module';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { withLatestFrom, mergeMap, of } from 'rxjs';
@@ -8,9 +7,7 @@ import { flightListStateSelector } from '../selectors/flight-list.selector';
 
 import * as journeyActions from '../actions/journey.actions';
 
-@Injectable({
-  providedIn: FlightStoreModule,
-})
+@Injectable()
 export class CalculateJourneyEffect {
   constructor(
     private actions$: Actions,

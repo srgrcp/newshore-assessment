@@ -1,0 +1,94 @@
+<div *ngIf="isJourneyLoading()" class="flex justify-center items-center py-10">
+  <p class="font-semibold text-xl">
+    Estamos buscando los vuelos más baratos...
+  </p>
+</div>
+
+<div
+  *ngIf="!isJourneyLoading() && !journey()"
+  class="flex justify-center items-center py-10"
+>
+  <p class="font-semibold text-xl">
+    Lo sentimos, no encontramos una ruta para ese destino :(
+  </p>
+</div>
+
+<div *ngIf="!hasJourneyError()" class="flex justify-center items-center py-10">
+  <p class="font-semibold text-xl">
+    No pudimos calcular la mejor ruta debido a que no fue posible cargar la
+    lista de vuelos :(
+  </p>
+</div>
+
+<div *ngIf="journey() as journey" class="flex flex-col gap-3">
+  <div class="py-6">
+    <p class="text-center text-4xl font-bold mb-2">
+      {{ journey.origin }} - {{ journey.destination }}
+    </p>
+    <div class="flex gap-1 justify-center items-center">
+      <img
+        class="w-4 h-4"
+        src="/assets/icons/bill.svg"
+        width="16"
+        height="16"
+        alt="bill icon"
+      />
+      <span class="text-center text-zinc-700">
+        {{ journey.price }}
+      </span>
+    </div>
+  </div>
+
+  <div
+    *ngFor="let flight of journey.flights"
+    class="grid grid-cols-4 grid-rows-3 p-4 bg-zinc-200 rounded-lg"
+  >
+    <div class="row-span-3 flex justify-center items-center">
+      <p class="text-center text-2xl font-semibold">
+        {{ flight.origin }}
+      </p>
+    </div>
+    <div
+      class="col-span-2 col-start-2 row-start-1 flex gap-1 justify-center items-center"
+    >
+      <img
+        class="w-3 h-3"
+        src="/assets/icons/flag.svg"
+        width="12"
+        height="12"
+        alt="flag icon"
+      />
+      <span class="text-center text-xs">
+        {{ flight.transport.flightCarrier }}
+      </span>
+    </div>
+    <div class="col-span-2 col-start-2 row-start-2 flex items-center">
+      <hr class="w-full border-t-2 border-indigo-500" />
+    </div>
+    <div
+      class="col-span-2 col-start-2 row-start-3 flex gap-1 justify-center items-center"
+    >
+      <img
+        class="w-3 h-3"
+        src="/assets/icons/plane.svg"
+        width="12"
+        height="12"
+        alt="plane icon"
+      />
+      <span class="text-center text-xs">
+        {{ flight.transport.flightNumber }}
+      </span>
+    </div>
+    <div class="row-span-3 flex justify-center items-center">
+      <p class="text-center text-2xl font-semibold">
+        {{ flight.destination }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="w-full flex justify-end p-6 pb-0">
+  <a (click)="goBack()" class="text-indigo-600 hover:underline cursor-pointer"
+    >Realizar otra busqueda</a
+  >
+</div>

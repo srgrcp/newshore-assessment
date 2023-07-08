@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FlightStoreModule } from '../flight-store.module';
 import { Flight } from '../../types/flight';
 import { Journey } from '../../types/journey';
 
-@Injectable({
-  providedIn: FlightStoreModule,
-})
+@Injectable()
 export class DijkstraService {
   calculateJourney(
     graph: Flight[],

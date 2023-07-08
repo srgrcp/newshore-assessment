@@ -1,9 +1,14 @@
 <ns-card title="Calculadora de rutas">
-  <p>Elige el origen y el destino y haz clic en el botón calcular.</p>
-
   <ns-journey-form
+    *ngIf="step() === FORM_STEP"
     [journeyInputForm]="journeyInputForm"
     [hasSubmited]="hasSubmited"
     (onSubmit)="calculate()"
   ></ns-journey-form>
+
+  <ns-journey-result
+    *ngIf="step() === RESULT_STEP"
+    [journeyState]="journeyState"
+    (goToForm)="goToForm()"
+  ></ns-journey-result>
 </ns-card>

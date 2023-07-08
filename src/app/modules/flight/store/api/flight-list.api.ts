@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FlightStoreModule } from '../flight-store.module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlightApiResponse } from '../../types/flight';
 
-@Injectable({
-  providedIn: FlightStoreModule,
-})
+@Injectable()
 export class FlightListApi {
   constructor(private http: HttpClient) {}
 

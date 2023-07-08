@@ -4,6 +4,14 @@ import { JourneyCalculatorComponent } from './journey-calculator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from 'src/app/modules/common/components/card/card.component';
 import { JourneyFormComponent } from '../../components/journey-form/journey-form.component';
+import { FlightListLoaderService } from '../../services/flight-list-loader.service';
+import { provideMockStore } from '@ngrx/store/testing';
+import {
+  FlightListState,
+  flightListInitialState,
+} from '../../store/reducers/flight-list.reducer';
+import { flightListStateSelector } from '../../store/selectors/flight-list.selector';
+import { JourneyCalculatorService } from '../../services/journey-calculator.service';
 
 describe('JourneyCalculatorComponent', () => {
   let component: JourneyCalculatorComponent;
@@ -13,6 +21,23 @@ describe('JourneyCalculatorComponent', () => {
     TestBed.configureTestingModule({
       declarations: [JourneyCalculatorComponent, JourneyFormComponent],
       imports: [CardComponent, ReactiveFormsModule],
+      providers: [
+        FlightListLoaderService,
+        JourneyCalculatorService,
+        provideMockStore<FlightListState>({
+          initialState: flightListInitialState,
+          selectors: [
+            {
+              selector: flightListStateSelector,
+              value: {
+                flights: null,
+                loading: false,
+                error: false,
+              },
+            },
+          ],
+        }),
+      ],
     });
     fixture = TestBed.createComponent(JourneyCalculatorComponent);
     component = fixture.componentInstance;
