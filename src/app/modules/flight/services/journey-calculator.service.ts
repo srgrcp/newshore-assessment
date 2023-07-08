@@ -10,6 +10,7 @@ import { journeyStateSelector } from '../store/selectors/journey.selector';
 import { calculateJourney } from '../store/actions/journey.actions';
 import { CurrencyConverterService } from '../../common/services/currency-converter/currency-converter.service';
 import { SettingsService } from '../../common/services/settings/settings.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class JourneyCalculatorService {
@@ -32,6 +33,12 @@ export class JourneyCalculatorService {
 
         const price = state.journey.price;
         const currency = this.settingsService.currency();
+
+        // Skip if customer currency is the same than base currency
+        if (currency === environment.baseCurrency) {
+          return of(state);
+        }
+
         return this.currencyConverterService.convertUsdTo(currency, price).pipe(
           map<number, JourneyState>((newPrice) => {
             if (!state.journey) {
